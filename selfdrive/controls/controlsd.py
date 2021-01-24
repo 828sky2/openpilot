@@ -158,8 +158,8 @@ class Controls:
     if self.sm['thermal'].batteryPercent < 1 and self.sm['thermal'].chargingError:
       # at zero percent battery, while discharging, OP should not allowed
       self.events.add(EventName.lowBattery)
-    if self.sm['thermal'].thermalStatus >= ThermalStatus.red:
-      self.events.add(EventName.overheat)
+    #if self.sm['thermal'].thermalStatus >= ThermalStatus.red:
+     # self.events.add(EventName.overheat)
     if self.sm['thermal'].freeSpace < 0.07:
       # under 7% of space free no enable allowed
       self.events.add(EventName.outOfSpace)
@@ -205,8 +205,8 @@ class Controls:
     if not self.sm.alive['plan'] and self.sm.alive['pathPlan']:
       # only plan not being received: radar not communicating
       self.events.add(EventName.radarCommIssue)
-    elif not self.sm.all_alive_and_valid():
-      self.events.add(EventName.commIssue)
+    #elif not self.sm.all_alive_and_valid():
+      #self.events.add(EventName.commIssue)
     if not self.sm['pathPlan'].mpcSolutionValid:
       self.events.add(EventName.plannerError)
     if not self.sm['liveLocationKalman'].sensorsOK and not NOSENSOR:
